@@ -2,5 +2,5 @@
 adduser ${USERNAME}
 echo "${PASSWORD}\n${PASSWORD}" | smbpasswd -a -s ${USERNAME}
 usermod -g users ${USERNAME}
-unset PASSWROD
+unset PASSWORD
 exec "$@"
