@@ -1,4 +1,4 @@
-FROM debian.11
+FROM debian:11
 
 RUN apt update && apt install --yes \
   samba && rm -rf /var/lib/apt/lists/*
