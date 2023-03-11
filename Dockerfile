@@ -15,4 +15,4 @@ RUN chmod +x /entrypoint.sh
 EXPOSE 445
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["smbd", "-F", "--debug-stdout", "--no-process-group"]
+CMD ["smbd", "-F", "--no-process-group"]
