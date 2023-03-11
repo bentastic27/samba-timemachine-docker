@@ -1,6 +1,5 @@
 #!/bin/bash
-adduser ${USERNAME}
+useradd -M ${USERNAME} -G USERS
 echo -e "${PASSWORD}\n${PASSWORD}" | smbpasswd -a -s ${USERNAME}
-usermod -g users ${USERNAME}
 unset PASSWORD
 exec "$@"
