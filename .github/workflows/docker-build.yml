@@ -47,5 +47,5 @@ jobs:
         uses: lucacome/docker-image-update-checker@v1
         with:
           base-image: debian:11
-          image: user/app:latest
+          image: bentastic27/samba-timemachine-docker:latest
           platforms: linux/amd64,linux/arm64
