@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - "main"
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
-  docker:
+  build:
+    needs: check
+    if: needs.check.outputs.needs-updating == 'true' || ( github.event_name == 'push' && github.ref == 'refs/heads/master' )
     runs-on: ubuntu-latest
     steps:
       -
@@ -32,3 +36,16 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: bentastic27/samba-timemachine-docker:latest
+
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      needs-updating: ${{ steps.check.outputs.needs-updating }}
+    steps:
+      - name: Check if update available
+        id: check
+        uses: lucacome/docker-image-update-checker@v1
+        with:
+          base-image: debian:11
+          image: user/app:latest
+          platforms: linux/amd64,linux/arm64
