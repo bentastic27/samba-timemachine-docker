@@ -5,9 +5,9 @@ RUN apt update && apt install --yes \
 
 COPY smb.conf /etc/samba/smb.conf
 
-RUN mkdir /timemachine && \
-  chown .users /timemachine && \
-  chmod 771 /timemachine
+RUN mkdir /data && \
+  chown .users /data && \
+  chmod 771 /data
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
@@ -15,4 +15,4 @@ RUN chmod +x /entrypoint.sh
 EXPOSE 445
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["smbd", "-F", "--no-process-group"]
+CMD ["smbd", "-F", "--log-stdout", "--no-process-group"]
