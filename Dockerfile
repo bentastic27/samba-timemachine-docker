@@ -15,5 +15,6 @@ RUN chmod +x /entrypoint.sh /dummy_quota_cmd.sh
 
 EXPOSE 445
 
+ENV TM_MAX_SIZE=100G
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["smbd", "-F", "--log-stdout", "--no-process-group"]
