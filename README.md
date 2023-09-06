@@ -34,6 +34,8 @@ spec:
           name: samba
           hostPort: 445
         env:
+        - name: TM_MAX_SIZE
+          value: 100G
         - name: USERNAME
           value: ben
         - name: PASSWORD
