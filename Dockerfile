@@ -14,5 +14,6 @@ RUN chmod +x /entrypoint.sh
 
 EXPOSE 445
 
+ENV TM_MAX_SIZE="100G"
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["smbd", "-F", "--log-stdout", "--no-process-group"]
+CMD ["smbd", "-F", "--log-stdout", "--no-process-group", "--option=\"fruit:time machine max size\"=${TM_MAX_SIZE}"]
